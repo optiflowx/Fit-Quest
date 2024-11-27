@@ -1,3 +1,4 @@
+import 'package:fit_quest/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:fit_quest/ui/onboarding/splash_screen.dart';
 import 'package:fit_quest/ui/dashboard/home_page.dart';
@@ -25,10 +26,10 @@ class FitQuestApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/': (context) => const Splash(),
-        '/sign_in': (context) => const SignIn(),
-        '/sign_up': (context) => const SignUp(),
-        '/home_page': (context) => const HomePage(),
+        '/': (context) => SplashScreen(),
+        '/login-screen': (context) => const LoginPage(),
+        // '/sign_up': (context) => const SignUp(),
+        // '/home_page': (context) => const HomePage(),
       },
       // Handle unknown routes
       onUnknownRoute: (settings) {
