@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fit_quest/ui/splash_screen.dart';
-import 'package:fit_quest/ui/home_page.dart';
-import 'package:fit_quest/ui/sign_in.dart';
-import 'package:fit_quest/ui/sign_up.dart';
+import 'package:fit_quest/ui/onboarding/splash_screen.dart';
+import 'package:fit_quest/ui/dashboard/home_page.dart';
+import 'package:fit_quest/ui/signing_in/sign_in.dart';
+import 'package:fit_quest/ui/registering/sign_up.dart';
 
 void main() {
   runApp(const FitQuestApp());
