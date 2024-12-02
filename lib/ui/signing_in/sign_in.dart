@@ -1,16 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_quest/ui/registering/sign_up.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class LogIn extends StatefulWidget {
   static const routeName = '/login-screen';
 
-  const LoginPage({Key? key}) : super(key: key);
+  const LogIn({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LogInState createState() => _LogInState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LogInState extends State<LogIn> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
@@ -229,30 +230,83 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset('assets/Google.png'),
-                    iconSize: 5,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset('assets/Apple.png'),
-                    iconSize: 5,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset('assets/Github.png'),
-                    iconSize: 5,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset('assets/Facebook.png'),
-                    iconSize: 5,
-                  ),
-                ],
-              ),
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Card(
+                      color: Color(0xFF91A5A7), // Set the card's background color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0), // Optional: rounded corners
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0), // Padding inside the card
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            'assets/Google.png',
+                            height: 24,
+                            width: 24,
+                          ),
+                          iconSize: 24,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color(0xFF91A5A7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            'assets/Apple.png',
+                            height: 24,
+                            width: 24,
+                          ),
+                          iconSize: 24,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color(0xFF91A5A7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            'assets/GitHub.png',
+                            height: 24,
+                            width: 24,
+                          ),
+                          iconSize: 24,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color(0xFF91A5A7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            'assets/Facebook.png',
+                            height: 24,
+                            width: 24,
+                          ),
+                          iconSize: 24,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -263,7 +317,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/signup-screen');
+                      Navigator.pushNamed(context, SignUp.routeName);
                     },
                     child: Text(
                       'Sign up',

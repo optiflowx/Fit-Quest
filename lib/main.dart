@@ -27,8 +27,8 @@ class FitQuestApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => SplashScreen(),
-        '/login-screen': (context) => const LoginPage(),
-        // '/sign_up': (context) => const SignUp(),
+        '/login-screen': (context) => const LogIn(),
+        '/sign_up': (context) => const SignUp(),
         // '/home_page': (context) => const HomePage(),
       },
       // Handle unknown routes

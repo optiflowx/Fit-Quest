@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "437963810052",
+    "project_id": "fit-quest-flutter-project",
+    "storage_bucket": "fit-quest-flutter-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437963810052:android:df2642b70f35cdddc29c51",
+        "android_client_info": {
+          "package_name": "com.example.fit_quest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjN8HrY7U-IomRn2YT5bjGpkv8CtF06Eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
