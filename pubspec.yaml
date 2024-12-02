@@ -66,6 +66,12 @@ flutter:
     - assets/
     - assets/gogeta.jpeg
     - assets/fitQuest.png
+    - assets/design/bg1.png
+    - assets/design/bg2.png
+    - assets/design/bg3.png
+    - assets/design/bg4.png
+    - assets/design/bg5.png
+    - assets/design/bg6.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

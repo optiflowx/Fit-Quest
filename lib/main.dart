@@ -1,6 +1,6 @@
 import 'package:fit_quest/splash.dart';
 import 'package:flutter/material.dart';
-import 'package:fit_quest/ui/onboarding/splash_screen.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_one.dart';
 import 'package:fit_quest/ui/dashboard/home_page.dart';
 import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:fit_quest/ui/registering/sign_up.dart';
@@ -10,7 +10,7 @@ void main() {
 }
 
 class FitQuestApp extends StatelessWidget {
-  const FitQuestApp({Key? key}) : super(key: key);
+  const FitQuestApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class FitQuestApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
           titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -42,7 +42,7 @@ class FitQuestApp extends StatelessWidget {
 }
 
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({Key? key}) : super(key: key);
+  const ErrorPage({super.key});
 
   @override
   Widget build(BuildContext context) {

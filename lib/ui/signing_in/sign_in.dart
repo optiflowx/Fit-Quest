@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LogIn extends StatefulWidget {
   static const routeName = '/login-screen';
 
-  const LogIn({Key? key}) : super(key: key);
+  const LogIn({super.key});
 
   @override
   _LogInState createState() => _LogInState();
@@ -46,6 +46,16 @@ class _LogInState extends State<LogIn> {
             ),
           );
           await userCredential.user!.sendEmailVerification();
+
+          await showDialog(
+            context: context, 
+            builder: (context) => AlertDialog(
+              title: const Text('Email Verification Required'),
+              content: const Text(
+                'Please verify your email. A verification link has been sent to your email address.',
+              ),
+            ),
+          );
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -95,8 +105,8 @@ class _LogInState extends State<LogIn> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 100),
-              Text(
+              const SizedBox(height: 100),
+              const Text(
                 'Hey there,',
                 style: TextStyle(
                   fontSize: 24,
@@ -104,8 +114,8 @@ class _LogInState extends State<LogIn> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 'Welcome Back',
                 style: TextStyle(
                   fontSize: 28,
@@ -113,8 +123,8 @@ class _LogInState extends State<LogIn> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 30),
-              Text(
+              const SizedBox(height: 30),
+              const Text(
                 'Login to your Account',
                 style: TextStyle(
                   fontSize: 16,
@@ -122,33 +132,33 @@ class _LogInState extends State<LogIn> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 controller: _emailController,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined, color: Colors.white),
+                  prefixIcon: const Icon(Icons.email_outlined, color: Colors.white),
                   hintText: 'Email',
-                  hintStyle: TextStyle(color: Colors.white70),
+                  hintStyle: const TextStyle(color: Colors.white70),
                   filled: true,
-                  fillColor: Color(0xFF5E6870),
+                  fillColor: const Color(0xFF5E6870),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextField(
                 controller: _passwordController,
                 obscureText: !_isPasswordVisible,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline, color: Colors.white),
+                  prefixIcon: const Icon(Icons.lock_outline, color: Colors.white),
                   hintText: 'Password',
-                  hintStyle: TextStyle(color: Colors.white70),
+                  hintStyle: const TextStyle(color: Colors.white70),
                   filled: true,
-                  fillColor: Color(0xFF5E6870),
+                  fillColor: const Color(0xFF5E6870),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
@@ -168,20 +178,20 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               if (_isLoading)
-                CircularProgressIndicator()
+                const CircularProgressIndicator()
               else
                 ElevatedButton(
                   onPressed: _logIn,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5663FF),
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    backgroundColor: const Color(0xFF5663FF),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Sign In',
                       style: TextStyle(
@@ -192,7 +202,7 @@ class _LogInState extends State<LogIn> {
                     ),
                   ),
                 ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextButton(
                 onPressed: () async {
                   if (_emailController.text.isEmpty) {
@@ -214,7 +224,7 @@ class _LogInState extends State<LogIn> {
                     ),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'Forgot your password?',
                   style: TextStyle(
                     color: Colors.white,
@@ -223,17 +233,17 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
-              Text(
+              const SizedBox(height: 30),
+              const Text(
                 '-Or sign in with-',
                 style: TextStyle(color: Colors.white70),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Card(
-                      color: Color(0xFF91A5A7), // Set the card's background color
+                      color: const Color(0xFF91A5A7), // Set the card's background color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0), // Optional: rounded corners
                       ),
@@ -251,7 +261,7 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                     Card(
-                      color: Color(0xFF91A5A7),
+                      color: const Color(0xFF91A5A7),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
@@ -269,7 +279,7 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                     Card(
-                      color: Color(0xFF91A5A7),
+                      color: const Color(0xFF91A5A7),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
@@ -287,7 +297,7 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                     Card(
-                      color: Color(0xFF91A5A7),
+                      color: const Color(0xFF91A5A7),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
@@ -307,11 +317,11 @@ class _LogInState extends State<LogIn> {
                   ],
                 ),
 
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have an account? ",
                     style: TextStyle(color: Colors.white70),
                   ),
@@ -319,7 +329,7 @@ class _LogInState extends State<LogIn> {
                     onTap: () {
                       Navigator.pushNamed(context, SignUp.routeName);
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign up',
                       style: TextStyle(
                         color: Color(0xFF5663FF),
@@ -329,7 +339,7 @@ class _LogInState extends State<LogIn> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -340,18 +350,22 @@ class _LogInState extends State<LogIn> {
 
 // Placeholder for HomeScreen and SignUpScreen
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Text('Home Screen')),
     );
   }
 }
 
 class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Text('Sign Up Screen')),
     );
   }

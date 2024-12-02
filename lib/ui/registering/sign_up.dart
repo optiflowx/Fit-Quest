@@ -1,15 +1,131 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
   static const routeName = '/signup-screen'; // Route name for navigation
 
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({super.key});
 
   @override
   SignUpState createState() => SignUpState(); // Correct state class name
 }
 
 class SignUpState extends State<SignUp> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  bool _isLoading = false;
+  bool _isEmailInvalid = false; // New state variable for email validation
+
+  // Email format validation
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    return emailRegex.hasMatch(email);
+  }
+
+  Future<void> _signUp() async {
+    final name = _nameController.text.trim();
+    final phone = _phoneController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+    final confirmPassword = _confirmPasswordController.text.trim();
+
+    // Input validation
+    if (name.isEmpty || phone.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('All fields are required.')),
+      );
+      return;
+    }
+
+    if (!_isValidEmail(email)) {
+      setState(() {
+        _isEmailInvalid = true; // Highlight the email field with a red border
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid email address.')),
+      );
+      return;
+    }
+
+    setState(() {
+      _isEmailInvalid = false; // Reset email field border if valid
+    });
+
+    if (password.length < 6) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Password must be at least 6 characters.')),
+      );
+      return;
+    }
+    if (password != confirmPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Passwords do not match.')),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      if (userCredential.user != null) {
+        await userCredential.user!.sendEmailVerification();
+
+        await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Email Verification Required'),
+            content: const Text(
+              'A verification email has been sent to your email address. Please verify your email to complete the registration.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pushReplacementNamed(context, LogIn.routeName),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      String errorMessage;
+      switch (e.code) {
+        case 'email-already-in-use':
+          errorMessage = 'This email is already registered.';
+          break;
+        case 'invalid-email':
+          errorMessage = 'The email address is not valid.';
+          break;
+        case 'weak-password':
+          errorMessage = 'The password is too weak.';
+          break;
+        default:
+          errorMessage = 'An error occurred. Please try again.';
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMessage)),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registration failed: $e')),
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +137,6 @@ class SignUpState extends State<SignUp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Greeting text
                 const Text(
                   'Hey there,',
                   style: TextStyle(
@@ -39,62 +154,63 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                // Full Name Input Field
                 _buildTextField(
+                  controller: _nameController,
                   icon: Icons.person_outline,
                   hintText: 'Full Name',
                 ),
                 const SizedBox(height: 15),
-                // Phone Number Input Field
                 _buildTextField(
+                  controller: _phoneController,
                   icon: Icons.phone_outlined,
                   hintText: 'Phone Number',
                 ),
                 const SizedBox(height: 15),
-                // Email Input Field
                 _buildTextField(
+                  controller: _emailController,
                   icon: Icons.email_outlined,
                   hintText: 'Email',
+                  isInvalid: _isEmailInvalid, // Pass validation status to the field
                 ),
                 const SizedBox(height: 15),
-                // Password Input Field
                 _buildTextField(
+                  controller: _passwordController,
                   icon: Icons.lock_outline,
                   hintText: 'Password',
                   isPassword: true,
                 ),
                 const SizedBox(height: 15),
-                // Confirm Password Input Field
                 _buildTextField(
+                  controller: _confirmPasswordController,
                   icon: Icons.lock_outline,
                   hintText: 'Confirm Password',
                   isPassword: true,
                 ),
                 const SizedBox(height: 30),
-                // Sign Up Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6367F1), // Button color
+                      backgroundColor: const Color(0xFF6367F1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
-                    onPressed: () {},
-                    child: const Text(
-                      'Sign up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    onPressed: _isLoading ? null : _signUp,
+                    child: _isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text(
+                            'Sign up',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Sign Up With Text
                 const Text(
                   '-Or sign up with-',
                   style: TextStyle(
@@ -103,89 +219,16 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Social Media Buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Card(
-                      color:
-                          Color(0xFF91A5A7), // Set the card's background color
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Optional: rounded corners
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(
-                            8.0), // Padding inside the card
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/Google.png',
-                            height: 24,
-                            width: 24,
-                          ),
-                          iconSize: 24,
-                        ),
-                      ),
-                    ),
-                    Card(
-                      color: Color(0xFF91A5A7),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/Apple.png',
-                            height: 24,
-                            width: 24,
-                          ),
-                          iconSize: 24,
-                        ),
-                      ),
-                    ),
-                    Card(
-                      color: Color(0xFF91A5A7),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/GitHub.png',
-                            height: 24,
-                            width: 24,
-                          ),
-                          iconSize: 24,
-                        ),
-                      ),
-                    ),
-                    Card(
-                      color: Color(0xFF91A5A7),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/Facebook.png',
-                            height: 24,
-                            width: 24,
-                          ),
-                          iconSize: 24,
-                        ),
-                      ),
-                    ),
+                    _buildSocialIcon('assets/Google.png'),
+                    _buildSocialIcon('assets/Apple.png'),
+                    _buildSocialIcon('assets/GitHub.png'),
+                    _buildSocialIcon('assets/Facebook.png'),
                   ],
                 ),
                 const SizedBox(height: 20),
-                // Already Have an Account? Login
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -197,7 +240,9 @@ class SignUpState extends State<SignUp> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, LogIn.routeName);
+                      },
                       child: const Text(
                         'Login',
                         style: TextStyle(
@@ -217,36 +262,40 @@ class SignUpState extends State<SignUp> {
     );
   }
 
-  // Input Field Builder
   Widget _buildTextField({
+    required TextEditingController controller,
     required IconData icon,
     required String hintText,
     bool isPassword = false,
+    bool isInvalid = false, // New parameter for invalid state
   }) {
     return TextField(
+      controller: controller,
       obscureText: isPassword,
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFF91A5A7), // Input field background color
+        fillColor: const Color(0xFF91A5A7),
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.white),
         prefixIcon: Icon(
           icon,
-          color: Colors.white, // Icon color
+          color: Colors.white,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(
+            color: isInvalid ? Colors.red : Colors.transparent,
+            width: 1.0,
+          ),
         ),
       ),
-      style: const TextStyle(color: Colors.white), // Input text color
+      style: const TextStyle(color: Colors.white),
     );
   }
 
-  // Social Media Icon Builder
   Widget _buildSocialIcon(String assetPath) {
     return Card(
-      color: const Color(0xFF91A5A7), // Card background color
+      color: const Color(0xFF91A5A7),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),

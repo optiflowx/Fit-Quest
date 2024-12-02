@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FacebookSignInButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const FacebookSignInButton({Key? key, required this.onPressed}) : super(key: key);
+  const FacebookSignInButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

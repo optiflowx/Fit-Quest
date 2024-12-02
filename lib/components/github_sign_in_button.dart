@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GitHubSignInButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const GitHubSignInButton({Key? key, required this.onPressed}) : super(key: key);
+  const GitHubSignInButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

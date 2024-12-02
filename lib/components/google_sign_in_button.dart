@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class GoogleSignInButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const GoogleSignInButton({Key? key, required this.onPressed}) : super(key: key);
+  const GoogleSignInButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +14,11 @@ class GoogleSignInButton extends StatelessWidget {
       onPressed: () async {
         // Trigger Google Sign-In
         try {
-          GoogleSignIn _googleSignIn = GoogleSignIn(
+          GoogleSignIn googleSignIn = GoogleSignIn(
             scopes: ['email', 'profile'],
           );
 
-          GoogleSignInAccount? account = await _googleSignIn.signIn();
+          GoogleSignInAccount? account = await googleSignIn.signIn();
           if (account != null) {
             // Sign-in successful
             print('User signed in: ${account.displayName}');
@@ -46,7 +46,7 @@ class GoogleSignInButton extends StatelessWidget {
         height: 24,
         width: 24,
       ),
-      label: Text('Continue with Google'),
+      label: const Text('Continue with Google'),
     );
   }
 }
