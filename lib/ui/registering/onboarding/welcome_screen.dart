@@ -1,20 +1,21 @@
-import 'package:fit_quest/ui/dashboard/home_page.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingFour extends StatefulWidget {
-  static const routeName = '/OnboardingFour-screen'; // Route name for navigation
+class WelcomeScreen extends StatefulWidget {
+  static const routeName = '/WelcomeScreen-screen'; // Route name for navigation
 
-  const OnBoardingFour({super.key});
+  const WelcomeScreen({super.key, required this.name}); // Pass the key here
+
+  final String name;
 
   @override
-  OnBoardingFourState createState() => OnBoardingFourState(); // Correct state class name
+  WelcomeScreenState createState() => WelcomeScreenState();
 }
 
-class OnBoardingFourState extends State<OnBoardingFour> {
+class WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282A3C), // Background color
+      backgroundColor: const Color(0xFF282A3C), // Background color
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -22,19 +23,17 @@ class OnBoardingFourState extends State<OnBoardingFour> {
             flex: 2,
             child: Stack(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF6F57FF),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(100),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
                     ),
-                  ),
-                  child: Center(
+                    padding: const EdgeInsets.only(top: 60),
                     child: Image.asset(
-                      'assets/design/bg2.png', // Path to your image
-                      width: 150, // Adjust the size as needed
-                      height: 150,
-                      fit: BoxFit.contain, // Ensures the image fits within the dimensions
+                      'assets/bg6.png', // Replace with your image asset
+                      height: 250,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -49,36 +48,36 @@ class OnBoardingFourState extends State<OnBoardingFour> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Track Your Goal",
-                    style: TextStyle(
+                    'Welcome, ${widget.name}', // Use widget.name here
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 12),
-                  Text(
-                    "Don't worry if you have trouble determining your goals. We can help you determine your goals and track your progress.",
+                  const SizedBox(height: 12),
+                  const Text(
+                    "You are all set now, let's reach your goals together with us",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white70,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomePage.routeName);
+                      Navigator.pushNamed(context, '/home_page-screen');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6F57FF),
+                      backgroundColor: const Color(0xFF6367F1),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    child: Text(
-                      "Next",
+                    child: const Text(
+                      "Go to Home",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_first.dart';
 import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class SignUpState extends State<SignUp> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool _isLoading = false;
   bool _isEmailInvalid = false; // New state variable for email validation
 
@@ -34,7 +36,11 @@ class SignUpState extends State<SignUp> {
     final confirmPassword = _confirmPasswordController.text.trim();
 
     // Input validation
-    if (name.isEmpty || phone.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
+    if (name.isEmpty ||
+        phone.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('All fields are required.')),
       );
@@ -57,7 +63,8 @@ class SignUpState extends State<SignUp> {
 
     if (password.length < 6) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password must be at least 6 characters.')),
+        const SnackBar(
+            content: Text('Password must be at least 6 characters.')),
       );
       return;
     }
@@ -73,7 +80,8 @@ class SignUpState extends State<SignUp> {
     });
 
     try {
-      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -90,7 +98,8 @@ class SignUpState extends State<SignUp> {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pushReplacementNamed(context, LogIn.routeName),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, LogIn.routeName),
                 child: const Text('OK'),
               ),
             ],
@@ -170,7 +179,8 @@ class SignUpState extends State<SignUp> {
                   controller: _emailController,
                   icon: Icons.email_outlined,
                   hintText: 'Email',
-                  isInvalid: _isEmailInvalid, // Pass validation status to the field
+                  isInvalid:
+                      _isEmailInvalid, // Pass validation status to the field
                 ),
                 const SizedBox(height: 15),
                 _buildTextField(
@@ -197,7 +207,14 @@ class SignUpState extends State<SignUp> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
-                    onPressed: _isLoading ? null : _signUp,
+                    onPressed: _isLoading
+                        ? null
+                        : () {
+                            Navigator.pushNamed(
+                              context,
+                              OnBoardingFirst.routeName,
+                            );
+                          },
                     child: _isLoading
                         ? const CircularProgressIndicator(color: Colors.white)
                         : const Text(
@@ -241,7 +258,8 @@ class SignUpState extends State<SignUp> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, LogIn.routeName);
+                        Navigator.pushReplacementNamed(
+                            context, LogIn.routeName);
                       },
                       child: const Text(
                         'Login',

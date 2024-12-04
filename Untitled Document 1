@@ -1,0 +1,65 @@
+you are a senior flutter developer. You are tasked in creating a fitness tracking app. these are the following details about it.
+
+Name of the app is called Fit-Quest.
+
+key features:
+-have a splash screen that will load for 5 seconds and lead the user to the login page
+-firebase authentication for the login and sign in page
+-a navigation bar at the bottom page for all the main 4 pages which are the dashboard, exercise page, dietry page and user profile page.
+-have a dashboard(that will have the details tracked by the app and a summary of the users progress)
+-an exercise page(a page with the different types of exercises a user can choose from)
+-a dietry page(a page where the app will recommend different types of dietry plans based on the BMI of the user and the type of workout plan they use.)
+-a user profile page where the user can update their details and get a look into their account.
+-the app should make use of SQLite for offline useage of the app
+
+Firebase auth:
+-the login page will take the users email and password to login
+-the user has other options of logging in, using Google, Apple, GitHub or Facebook
+-if the user doesn't have an account, the text "Don't have ab account? Sign up" should lead the user to the sign up page
+-if the user successfully logs in, it should direct them to the welcome page and the welcome page will take them to the home page.
+
+Navigation Bar:
+-there will be 4 icons, each directing a user to their respective page, which being
+	-Dashboard (Home page)
+	-Exercise page
+	-Leaderboard page
+	-Dietry page
+	-user profile page
+-the icons should be on default color when their respective page is not active, but a different color when the user is on their respective page.
+
+
+Home page:
+-this is the dashboard with the users progress details summariezed in card formats.
+-on top of the page, the app will welcome the user, using their name
+-underneath the ggreeting, the will be 5 cards that have dates on it. the first date being the previous days date, the the second card is the current date, followed by the next 3 days from the current date.
+-next in the "My Plans" section with 4 cards.
+	-the first card being the daily workout plan and how many hours if should take the user to complete
+	the next card is a meditation card. It times the user on how long the user can meditate for. the user has the option to set their desired time for meditation.
+	-the next card is the calories tracker. this card should track how much calories a users has burned since they started to exercise on the current day.
+	-the next card will keep track of the steps a user takes in a day.
+-underneath is the "Weekly Stats" section.
+	-this section will display the users weekly stats in a bar graph format. these stats arr the amount of time the users has used the app/exercised during the week.
+	
+Exercise page:
+-this is the page where the user will get all the exercise options they want to choose from.
+-there are 5 card option to choose from. There will be the type of exercises to do. being:
+	-Calisthenics
+		-this card will take the user to the calisthenics page where the page will provide a user the workout plans for calisthencis, depending on the type of part they want to workout. the workout catagories are Upper body workout, Lower body workout and Full body workout. these catagories need to be in card format, so that each card provides the respective workout plan.
+	-Yoga
+		-this card will provide the user with the the different types of yoga positions to do.
+	-Weight lifting
+		-this card will provide the user three catagories, mainly being upper, lower and full body workout.
+	-Running
+		-this card will keep track of the user when they want to run. It will keep tack of the distance the user runs, the time it takes a user runs from point a to point b and as well as calculate the speed it took the user to get to point b. and it will make use of google maps api for the tracking and it will draw the polylines from point a to point b.
+	-Cycling
+		-this card will keep track of the user when they want to cycle. It will keep tack of the distance the user cycles, the time it takes a user to cycle from point a to point b and as well as calculate the speed it took the user to get to point b. and it will make use of google maps api for the tracking and it will draw the polylines from point a to point b.
+	
+Leaderboard page:
+-this page will keep track of all the users who have an account on the app and rank them based on the goals they achieve when using the app.
+
+Dietry page:
+-this page will ask the user their weight and height, to calculate their IBM. Once the IBM hasw been calculated. the user will recommendated a diet to follow based on their IBM score.
+
+User Profile page:
+-we  can leave this blank for now...
+

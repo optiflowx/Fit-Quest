@@ -1,12 +1,15 @@
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_one.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingFirst extends StatefulWidget {
-  static const routeName = '/OnboardingFirst-screen'; // Route name for navigation
+  static const routeName =
+      '/OnboardingFirst-screen'; // Route name for navigation
 
   const OnBoardingFirst({super.key});
 
   @override
-  OnBoardingFirstState createState() => OnBoardingFirstState(); // Correct state class name
+  OnBoardingFirstState createState() =>
+      OnBoardingFirstState(); // Correct state class name
 }
 
 class OnBoardingFirstState extends State<OnBoardingFirst> {
@@ -33,7 +36,8 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
                       'assets/design/bg1.png', // Path to your image
                       width: 150, // Adjust the size as needed
                       height: 150,
-                      fit: BoxFit.contain, // Ensures the image fits within the dimensions
+                      fit: BoxFit
+                          .contain, // Ensures the image fits within the dimensions
                     ),
                   ),
                 ),
@@ -67,14 +71,15 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
                   SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      // Action for the Next button
+                      Navigator.pushNamed(context, OnBoardingOne.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF6F57FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                     ),
                     child: Text(
                       "Next",

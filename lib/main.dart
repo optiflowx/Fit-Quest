@@ -1,6 +1,15 @@
+import 'dart:collection';
+
 import 'package:fit_quest/splash.dart';
-import 'package:flutter/material.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_first.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_four.dart';
 import 'package:fit_quest/ui/registering/onboarding/on_boarding_one.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_three.dart';
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_two.dart';
+import 'package:fit_quest/ui/registering/onboarding/welcome_screen.dart';
+import 'package:fit_quest/ui/running_tracker/running_tracker.dart';
+import 'package:flutter/material.dart';
+// import 'package:fit_quest/ui/registering/onboarding/on_boarding_one.dart';
 import 'package:fit_quest/ui/dashboard/home_page.dart';
 import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:fit_quest/ui/registering/sign_up.dart';
@@ -26,10 +35,17 @@ class FitQuestApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/': (context) => SplashScreen(),
+        '/': (context) => const SplashScreen(),
         '/login-screen': (context) => const LogIn(),
         '/sign_up': (context) => const SignUp(),
-        // '/home_page': (context) => const HomePage(),
+        '/home_page-screen': (context) => const HomePage(),
+        '/mapview-screen': (context) => CustomMapView(),
+        '/OnboardingFirst-screen': (context) => OnBoardingFirst(),
+        '/OnboardingOne-screen': (context) => OnBoardingOne(),
+        '/OnboardingTwo-screen': (context) => OnBoardingTwo(),
+        '/OnboardingThree-screen': (context) => OnBoardingThree(),
+        '/OnboardingFour-screen': (context) => OnBoardingFour(),
+        '/WelcomeScreen-screen': (context) => WelcomeScreen(name: 'Katlego',),
       },
       // Handle unknown routes
       onUnknownRoute: (settings) {

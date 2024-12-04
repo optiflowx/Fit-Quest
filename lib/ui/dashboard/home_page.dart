@@ -1,166 +1,101 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:fit_quest/ui/dashboard/navigation_bar.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class HomePage extends StatefulWidget {
+  static const routeName = '/home_page-screen';
 
-class MyApp extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Arial',
-        primarySwatch: Colors.blueGrey,
-        scaffoldBackgroundColor: Color(0xFF212121),
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white),
-          bodySmall: TextStyle(color: Colors.white),
-          headlineLarge: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-          headlineMedium: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-          headlineSmall: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      home: Dashboard(),
-    );
-  }
+  _HomePageState createState() => _HomePageState();
 }
 
-class Dashboard extends StatefulWidget {
-  @override
-  _DashboardState createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashboard> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF212121),
-        elevation: 0,
-        title: Text('EVERYDAY WE\'RE MUSCLE\'N'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.emoji_emotions_outlined),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
+      backgroundColor: const Color(0xFF1E1E1E), // Background color
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 16.0,
+            const Text(
+              "EVERYDAY WE'RE MUSCLE'N",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              "Hello, Katlego 👋",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 32),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                DayColumn(day: "25", label: "Wed"),
+                DayColumn(day: "26", label: "Thu"),
+                DayColumn(day: "29", label: "Sat"),
+                DayColumn(day: "30", label: "Sun"),
+              ],
+            ),
+            const SizedBox(height: 32),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF3E3E3E),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                  'Hey, Champ!',
-                    style: Theme.of(context).textTheme.headlineLarge,
+                  const Text("My Plan", style: TextStyle(color: Colors.white, fontSize: 20)),
+                  const SizedBox(height: 16),
+                  const PlanItem(title: "Workout", duration: "2 hours", color: Colors.purple),
+                  const PlanItem(title: "Meditate", duration: "1 hour", color: Colors.blue),
+                  const PlanItem(title: "Food", duration: "1832 kcal", color: Colors.orange),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Let’s Go"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                    ),
                   ),
-                  Text(
-                    'Your daily progress',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                ],
+              ),
+            ),
+            const SizedBox(height: 32),
+            const Text("Weekly Stats", style: TextStyle(color: Colors.white, fontSize: 20)),
+            const SizedBox(height: 8),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: const Color(0xFF3E3E3E),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
+                  const Text(
+                    "Most Active: Friday",
+                    style: TextStyle(color: Colors.white),
                   ),
-                  SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Workouts',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '3',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Sets',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '12',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Reps',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '50',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                  Text(
-                    'Your progress',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Weight',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '70 kg',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Body fat',
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '20%',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
-                    ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        DayStat(day: "Mon", active: false),
+                        DayStat(day: "Tue", active: false),
+                        DayStat(day: "Wed", active: false),
+                        DayStat(day: "Thu", active: false),
+                        DayStat(day: "Fri", active: true),
+                        DayStat(day: "Sat", active: false),
+                        DayStat(day: "Sun", active: false),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -168,7 +103,114 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBar.routeName(),
     );
   }
 }
+
+// DayColumn Widget for displaying date and day
+class DayColumn extends StatelessWidget {
+  final String day;
+  final String label;
+
+  const DayColumn({required this.day, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          day,
+          style: const TextStyle(color: Colors.white, fontSize: 24),
+        ),
+        Text(label, style: const TextStyle(color: Colors.white)),
+      ],
+    );
+  }
+}
+
+// PlanItem Widget for displaying individual plans
+class PlanItem extends StatelessWidget {
+  final String title;
+  final String duration;
+  final Color color;
+
+  const PlanItem({
+    required this.title,
+    required this.duration,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: const TextStyle(color: Colors.white)),
+          Text(duration, style: const TextStyle(color: Colors.white)),
+        ],
+      ),
+    );
+  }
+}
+
+// DayStat Widget for weekly activity stats
+class DayStat extends StatelessWidget {
+  final String day;
+  final bool active;
+
+  const DayStat({required this.day, required this.active});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(day, style: const TextStyle(color: Colors.white)),
+        Container(
+          height: active ? 40 : 20,
+          width: 10,
+          color: active ? Colors.blue : Colors.grey,
+        ),
+      ],
+    );
+  }
+}
+
+Widget _buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.fitness_center),
+          label: 'Exercises',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      currentIndex: 0,
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            // Already on home screen
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/exercise_tracking');
+            break;
+          case 2:
+            Navigator.pushNamed(context, '/profile');
+            break;
+        }
+      },
+    );
+  }

@@ -1,7 +1,8 @@
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_three.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingTwo extends StatefulWidget {
-  static const routeName = '/OnBoardingTwo-screen'; // Route name for navigation
+  static const routeName = '/OnboardingTwo-screen'; // Route name for navigation
 
   const OnBoardingTwo({super.key});
 
@@ -67,7 +68,7 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
                   SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      // Action for the Next button
+                      Navigator.pushNamed(context, OnBoardingThree.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF6F57FF),

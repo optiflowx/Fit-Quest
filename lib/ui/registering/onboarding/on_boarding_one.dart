@@ -1,15 +1,16 @@
+import 'package:fit_quest/ui/registering/onboarding/on_boarding_two.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingOne extends StatefulWidget {
+class OnBoardingOne extends StatefulWidget {
   static const routeName = '/OnboardingOne-screen'; // Route name for navigation
 
-  const OnboardingOne({super.key});
+  const OnBoardingOne({super.key});
 
   @override
-  OnboardingOneState createState() => OnboardingOneState(); // Correct state class name
+  OnBoardingOneState createState() => OnBoardingOneState(); // Correct state class name
 }
 
-class OnboardingOneState extends State<OnboardingOne> {
+class OnBoardingOneState extends State<OnBoardingOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,7 @@ class OnboardingOneState extends State<OnboardingOne> {
                   SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      // Action for the Next button
+                      Navigator.pushNamed(context, OnBoardingTwo.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF6F57FF),
