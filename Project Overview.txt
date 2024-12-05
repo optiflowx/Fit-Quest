@@ -1,4 +1,5 @@
-you are a senior flutter developer. You are tasked in creating a fitness tracking app. these are the following details about it.
+You are a senior flutter developer. 
+You are tasked in creating a fitness tracking app. these are the following details about it.
 
 Name of the app is called Fit-Quest.
 

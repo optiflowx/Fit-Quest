@@ -60,10 +60,10 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text("Let’s Go"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                     ),
+                    child:  const Text("Let’s Go"),
                   ),
                 ],
               ),
@@ -77,16 +77,16 @@ class _HomePageState extends State<HomePage> {
                 color: const Color(0xFF3E3E3E),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
+              child: const Column(
                 children: [
-                  const Text(
+                  Text(
                     "Most Active: Friday",
                     style: TextStyle(color: Colors.white),
                   ),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children:  [
                         DayStat(day: "Mon", active: false),
                         DayStat(day: "Tue", active: false),
                         DayStat(day: "Wed", active: false),

@@ -1,26 +1,26 @@
 import 'dart:async';
-import 'package:fit_quest/ui/dashboard/home_page.dart';
-import 'package:fit_quest/ui/dashboard/navigation_bar.dart';
+// import 'package:fit_quest/ui/dashboard/home_page.dart';
+// import 'package:fit_quest/ui/dashboard/navigation_bar.dart';
 import 'package:fit_quest/ui/registering/sign_up.dart';
-import 'package:fit_quest/ui/running_tracker/running_tracker.dart';
-import 'package:fit_quest/ui/signing_in/sign_in.dart';
+// import 'package:fit_quest/ui/running_tracker/running_tracker.dart';
+// import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: SplashScreen(),
+//     );
+//   }
+// }
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           // Background image
           Image.asset(
-            'assets/gogeta.jpeg', // Replace with your image path
+            'assets/gogeta.jpeg', 
             fit: BoxFit.cover,
           ),
           // Icon overlay at the top
