@@ -14,7 +14,7 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282A3C), // Background color
+      backgroundColor: const Color(0xFF282A3C), // Background color
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -23,7 +23,7 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
             child: Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF6F57FF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(100),
@@ -48,7 +48,7 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Get Burn",
                     style: TextStyle(
                       fontSize: 24,
@@ -56,7 +56,7 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   const Text(
                     "Let's keep burning, to achieve your goals. It only hurts temporarily. If you give up now? You will be in pain forever.",
                     textAlign: TextAlign.center,
@@ -65,19 +65,19 @@ class OnBoardingTwoState extends State<OnBoardingTwo> {
                       color: Colors.white70,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, OnBoardingThree.routeName);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6F57FF),
+                      backgroundColor: const Color(0xFF6F57FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Next",
                       style: TextStyle(
                         fontSize: 16,

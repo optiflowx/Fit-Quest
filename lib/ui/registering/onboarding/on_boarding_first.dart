@@ -16,7 +16,7 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282A3C), // Background color
+      backgroundColor: const Color(0xFF282A3C), // Background color
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -25,7 +25,7 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
             child: Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF6F57FF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(100),
@@ -51,7 +51,7 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Waffles are just pancakes with abs",
                     style: TextStyle(
                       fontSize: 24,
@@ -59,8 +59,8 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 12),
-                  Text(
+                  const SizedBox(height: 12),
+                  const Text(
                     "Our recipes and workouts are the perfect way to start your day. Sweat hard, then have a snack or drink. Whatever you prefer!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -68,20 +68,20 @@ class OnBoardingFirstState extends State<OnBoardingFirst> {
                       color: Colors.white70,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, OnBoardingOne.routeName);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6F57FF),
+                      backgroundColor: const Color(0xFF6F57FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                       padding:
-                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                          const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Next",
                       style: TextStyle(
                         fontSize: 16,

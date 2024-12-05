@@ -1,4 +1,3 @@
-import 'dart:collection';
 
 import 'package:fit_quest/splash.dart';
 import 'package:fit_quest/ui/registering/onboarding/on_boarding_first.dart';
@@ -39,13 +38,13 @@ class FitQuestApp extends StatelessWidget {
         '/login-screen': (context) => const LogIn(),
         '/sign_up': (context) => const SignUp(),
         '/home_page-screen': (context) => const HomePage(),
-        '/mapview-screen': (context) => CustomMapView(),
-        '/OnboardingFirst-screen': (context) => OnBoardingFirst(),
-        '/OnboardingOne-screen': (context) => OnBoardingOne(),
-        '/OnboardingTwo-screen': (context) => OnBoardingTwo(),
-        '/OnboardingThree-screen': (context) => OnBoardingThree(),
-        '/OnboardingFour-screen': (context) => OnBoardingFour(),
-        '/WelcomeScreen-screen': (context) => WelcomeScreen(name: 'Katlego',),
+        '/mapview-screen': (context) => const CustomMapView(),
+        '/OnboardingFirst-screen': (context) => const OnBoardingFirst(),
+        '/OnboardingOne-screen': (context) => const OnBoardingOne(),
+        '/OnboardingTwo-screen': (context) => const OnBoardingTwo(),
+        '/OnboardingThree-screen': (context) => const OnBoardingThree(),
+        '/OnboardingFour-screen': (context) => const OnBoardingFour(),
+        '/WelcomeScreen-screen': (context) => const WelcomeScreen(name: 'Katlego',),
       },
       // Handle unknown routes
       onUnknownRoute: (settings) {

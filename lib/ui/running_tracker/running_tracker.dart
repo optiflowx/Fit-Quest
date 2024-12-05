@@ -7,7 +7,7 @@ class CustomMapView extends StatefulWidget{
     static const routeName = '/mapview-screen';
 
 
-  CustomMapView({super.key});
+  const CustomMapView({super.key});
 
   @override
   State<StatefulWidget> createState() => _CustomMapView();
@@ -16,7 +16,7 @@ class CustomMapView extends StatefulWidget{
 
 class _CustomMapView extends State<CustomMapView>{
 
-  late LatLng latLng = LatLng(-26.149302, 28.034762) ;
+  late LatLng latLng = const LatLng(-26.149302, 28.034762) ;
   late List<LatLng> routePositions= [];
 
   @override
@@ -58,12 +58,12 @@ class _CustomMapView extends State<CustomMapView>{
         TileLayer(
           urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
         userAgentPackageName: "com.example.app",),
-        RichAttributionWidget(
+        const RichAttributionWidget(
             attributions: [
               TextSourceAttribution("OpenStreetMap contributors")
             ]
         ), MarkerLayer(markers:
-          [Marker(point: latLng, child: Icon(Icons.person_pin,size: 60,),)]
+          [Marker(point: latLng, child: const Icon(Icons.person_pin,size: 60,),)]
         ),
         PolylineLayer(
           polylines: [

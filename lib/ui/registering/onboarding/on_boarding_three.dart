@@ -14,7 +14,7 @@ class OnBoardingThreeState extends State<OnBoardingThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282A3C), // Background color
+      backgroundColor: const Color(0xFF282A3C), // Background color
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -23,7 +23,7 @@ class OnBoardingThreeState extends State<OnBoardingThree> {
             child: Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF6F57FF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(100),
@@ -48,7 +48,7 @@ class OnBoardingThreeState extends State<OnBoardingThree> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Track Your Goal",
                     style: TextStyle(
                       fontSize: 24,
@@ -56,8 +56,8 @@ class OnBoardingThreeState extends State<OnBoardingThree> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 12),
-                  Text(
+                  const SizedBox(height: 12),
+                  const Text(
                     "Don't worry if you have trouble determining your goals. We can help you determine your goals and track your progress.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -65,19 +65,19 @@ class OnBoardingThreeState extends State<OnBoardingThree> {
                       color: Colors.white70,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, OnBoardingFour.routeName);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6F57FF),
+                      backgroundColor: const Color(0xFF6F57FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Next",
                       style: TextStyle(
                         fontSize: 16,

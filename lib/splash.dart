@@ -1,13 +1,9 @@
 import 'dart:async';
 import 'package:fit_quest/ui/dashboard/home_page.dart';
-import 'package:fit_quest/ui/dashboard/navigation_bar.dart';
-import 'package:fit_quest/ui/registering/sign_up.dart';
-import 'package:fit_quest/ui/running_tracker/running_tracker.dart';
-import 'package:fit_quest/ui/signing_in/sign_in.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
@@ -37,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 8), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => SignUp()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     });
   }

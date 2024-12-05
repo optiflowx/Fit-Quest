@@ -49,9 +49,9 @@ class _LogInState extends State<LogIn> {
 
           await showDialog(
             context: context, 
-            builder: (context) => AlertDialog(
-              title: const Text('Email Verification Required'),
-              content: const Text(
+            builder: (context) => const AlertDialog(
+              title: Text('Email Verification Required'),
+              content: Text(
                 'Please verify your email. A verification link has been sent to your email address.',
               ),
             ),
