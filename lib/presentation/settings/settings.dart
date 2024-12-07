@@ -1,10 +1,15 @@
+import 'package:fit_quest/app/routes/app_routes.dart';
+import 'package:fit_quest/core/extensions/context_extensions.dart';
 import 'package:fit_quest/core/extensions/iterable_extensions.dart';
+import 'package:fit_quest/core/repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 
 import 'widget/settings_item.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
+
+  static final _authRepository = AuthenticationRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +52,22 @@ class SettingsPage extends StatelessWidget {
             title: 'About',
             icon: Icons.info,
             onTap: () {},
+          ),
+          SettingsItem(
+            title: 'Logout',
+            icon: Icons.logout,
+            isLogout: true,
+            onTap: () async {
+              try {
+                await _authRepository.logOut().then((value) {
+                  if (context.mounted) {
+                    context.replace(AppRoutes.authSignIn);
+                  }
+                });
+              } catch (e) {
+                debugPrint(e.toString());
+              }
+            },
           ),
         ].spacer(const Divider(height: 0)),
       ),

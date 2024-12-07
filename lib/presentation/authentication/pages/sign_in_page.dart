@@ -15,9 +15,17 @@ class SignInPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignInCubit(),
       child: BlocListener<SignInCubit, SignInState>(
-        listener: (context, state) {
-          if (state.isLoggedIn) {
-            context.replace(AppRoutes.home);
+        listener: (context, state) async {
+          if (state.pageState.isError) {
+            context.showErrorSnackBar(state.pageState.failure!.message);
+          }
+
+          if (state.pageState.isLoaded) {
+            if (context.mounted) {
+              context.showSuccessSnackBar(state.pageState.success!.message);
+            }
+
+            await context.replace(AppRoutes.home);
           }
         },
         child: const SignInView(),

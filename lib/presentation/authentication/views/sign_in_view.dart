@@ -44,7 +44,7 @@ class SignInView extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               AppButton(
-                onPressed: () {},
+                onPressed: cubit.signIn,
                 isLoading: isLoading,
                 text: 'Sign In',
               ),

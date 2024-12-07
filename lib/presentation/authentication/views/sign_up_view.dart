@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../state/sign_up_cubit.dart';
+import '../widgets/google_sign_in_button.dart';
 import '../widgets/sign_up_header.dart';
 
 class SignUpView extends StatelessWidget {
@@ -29,6 +30,7 @@ class SignUpView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SignUpHeader(),
+                const SizedBox(height: 30),
                 ...<Widget>[
                   AppTextField(
                     controller: cubit.nameController,
@@ -59,6 +61,11 @@ class SignUpView extends StatelessWidget {
                   text: 'Sign Up',
                   isLoading: isLoading,
                 ),
+                const Text(
+                  '----Or sign up with----',
+                  style: TextStyle(color: Colors.white54, fontSize: 14),
+                ),
+                GoogleSignInButton(onPressed: () {}),
                 RichText(
                   text: TextSpan(
                     style: const TextStyle(fontSize: 14),

@@ -7,24 +7,26 @@ class SettingsItem extends StatelessWidget {
     required this.icon,
     this.onTap,
     this.trailing,
+    this.isLogout = false,
   });
 
   final String title;
   final IconData icon;
+  final bool isLogout;
   final VoidCallback? onTap;
   final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: Colors.blue),
+      leading: Icon(icon, color: isLogout ? Colors.red : Colors.blue),
       trailing: trailing,
       title: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          color: Colors.white,
+          color: isLogout ? Colors.red : Colors.white,
         ),
       ),
       onTap: onTap,
