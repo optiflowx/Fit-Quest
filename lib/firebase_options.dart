@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,9 +28,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyApN1jKu8cXDMFzfE0ubYMJy3XzjIkRwCM',
-    appId: '1:437963810052:web:b8e568a7c5261becc29c51',
-    messagingSenderId: '437963810052',
-    projectId: 'fit-quest-flutter-project',
-    authDomain: 'fit-quest-flutter-project.firebaseapp.com',
-    storageBucket: 'fit-quest-flutter-project.firebasestorage.app',
-    measurementId: 'G-988NB8452N',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBjN8HrY7U-IomRn2YT5bjGpkv8CtF06Eo',
-    appId: '1:437963810052:android:df2642b70f35cdddc29c51',
-    messagingSenderId: '437963810052',
-    projectId: 'fit-quest-flutter-project',
-    storageBucket: 'fit-quest-flutter-project.firebasestorage.app',
+    apiKey: 'AIzaSyC9OjUTZuKwCb0U0MzLpzMaEyk9hJl333k',
+    appId: '1:59659024451:android:2b983f2bdec6190473bcf6',
+    messagingSenderId: '59659024451',
+    projectId: 'fit-quest-app',
+    storageBucket: 'fit-quest-app.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCKX-Ltx5Uhfx8LUpHcAvsh-Hw_MQpDU2s',
-    appId: '1:437963810052:ios:90347774cc8ba68ac29c51',
-    messagingSenderId: '437963810052',
-    projectId: 'fit-quest-flutter-project',
-    storageBucket: 'fit-quest-flutter-project.firebasestorage.app',
+    apiKey: 'AIzaSyCOewdJ9xVBow1tXivoz8tC_012pnObzbs',
+    appId: '1:59659024451:ios:d558736db7d929d173bcf6',
+    messagingSenderId: '59659024451',
+    projectId: 'fit-quest-app',
+    storageBucket: 'fit-quest-app.firebasestorage.app',
     iosBundleId: 'com.example.fitQuest',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCKX-Ltx5Uhfx8LUpHcAvsh-Hw_MQpDU2s',
-    appId: '1:437963810052:ios:90347774cc8ba68ac29c51',
-    messagingSenderId: '437963810052',
-    projectId: 'fit-quest-flutter-project',
-    storageBucket: 'fit-quest-flutter-project.firebasestorage.app',
-    iosBundleId: 'com.example.fitQuest',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyApN1jKu8cXDMFzfE0ubYMJy3XzjIkRwCM',
-    appId: '1:437963810052:web:ec77e94e30655fa9c29c51',
-    messagingSenderId: '437963810052',
-    projectId: 'fit-quest-flutter-project',
-    authDomain: 'fit-quest-flutter-project.firebaseapp.com',
-    storageBucket: 'fit-quest-flutter-project.firebasestorage.app',
-    measurementId: 'G-1JBPLJKHCY',
   );
 }
