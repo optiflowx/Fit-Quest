@@ -35,7 +35,10 @@ class _ExercisePageState extends State<ExercisePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Exercises & Warm-Ups'),
+        title: const Text(
+          'Exercises & Warm-Ups',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blue, // Change to your preferred color
       ),
       body: SingleChildScrollView(
@@ -49,7 +52,7 @@ class _ExercisePageState extends State<ExercisePage> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 16),
