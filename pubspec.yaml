@@ -49,6 +49,7 @@ dependencies:
   easy_date_timeline: ^2.0.4
   
 dev_dependencies:
+  bloc_test: ^9.1.7
   flutter_test:
     sdk: flutter
 
