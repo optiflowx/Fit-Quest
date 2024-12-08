@@ -29,7 +29,7 @@ class _CustomMapView extends State<CustomMapView>{
   Future<void> getRealTimeLocation() async{
     LocationPermission permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.whileInUse || permission == LocationPermission.always){
-      Position position = await Geolocator.getCurrentPosition();
+      // Position position = await Geolocator.getCurrentPosition();
 
       locationStream = Geolocator.getPositionStream();
       //gets location every second or so
