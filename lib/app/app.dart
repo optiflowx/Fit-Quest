@@ -9,12 +9,24 @@ import 'package:fit_quest/presentation/onboarding/on_boarding_three.dart';
 import 'package:fit_quest/presentation/onboarding/on_boarding_two.dart';
 import 'package:fit_quest/presentation/onboarding/welcome_screen.dart';
 import 'package:fit_quest/presentation/running_tracker/running_tracker.dart';
+import '../core/services/system_ui_service.dart';
 import '../presentation/authentication/pages/sign_in_page.dart';
 import 'package:fit_quest/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
-class FitQuestApp extends StatelessWidget {
+class FitQuestApp extends StatefulWidget {
   const FitQuestApp({super.key});
+
+  @override
+  State<FitQuestApp> createState() => _FitQuestAppState();
+}
+
+class _FitQuestAppState extends State<FitQuestApp> {
+  @override
+  void initState() {
+    super.initState();
+    SystemUIService.initSystemUI();
+  }
 
   @override
   Widget build(BuildContext context) {

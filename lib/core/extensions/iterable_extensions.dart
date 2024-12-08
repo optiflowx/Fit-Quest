@@ -6,17 +6,26 @@ extension ListExtensions<T> on Iterable<T> {
   List<T> whereNotNull() => where((e) => e != null).toList();
 
   // Get all null elements
-  List<T> whereNull() => where((e) => e == null).toList();
+  // List<T> whereNull() => where((e) => e == null).toList();
 
   // Add a spacer between each element
   List<T> spacer(T widget) {
     if (isEmpty) return [];
-    
+
     return fold<List<T>>([first], (acc, curr) {
       if (acc.isEmpty) {
         return [curr];
       }
+      
       return curr == first ? acc : [...acc, widget, curr];
     });
+  }
+
+  // Should reverse the list
+  List<T> shouldReversed(bool shouldReverse) {
+    return switch (shouldReverse) {
+      true => toList().reversed.toList(),
+      false => toList(),
+    };
   }
 }

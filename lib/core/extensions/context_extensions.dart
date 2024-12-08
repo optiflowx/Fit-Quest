@@ -12,8 +12,19 @@ extension ContextExtensions on BuildContext {
 
   // Get Theme related properties
   ThemeData get theme => Theme.of(this);
-  TextTheme get textTWidgetheme => Theme.of(this).textTheme;
+  TextTheme get textTheme => Theme.of(this).textTheme;
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  // System UI Padding
+  EdgeInsets get systemPadding => MediaQuery.viewPaddingOf(this);
+  EdgeInsets get systemInsets => MediaQuery.viewInsetsOf(this);
+  EdgeInsets get systemPaddingAndInsets => systemPadding + systemInsets;
+
+  // Device padding
+  double get bottomPadding => systemPadding.bottom;
+  double get topPadding => systemPadding.top;
+  double get leftPadding => systemPadding.left;
+  double get rightPadding => systemPadding.right;
 
   // Navigation helpers
   NavigatorState get navigator => Navigator.of(this);

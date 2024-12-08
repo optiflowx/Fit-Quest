@@ -45,7 +45,9 @@ dependencies:
   firebase_core: ^3.8.1
   cloud_firestore: ^5.5.1
   flutter_bloc: ^8.1.6
-
+  flutter_constraintlayout: ^1.7.0-stable
+  easy_date_timeline: ^2.0.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
