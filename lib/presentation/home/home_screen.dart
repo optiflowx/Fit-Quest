@@ -1,7 +1,6 @@
 import 'package:fit_quest/presentation/dashboard/dashboard_page.dart';
 import 'package:fit_quest/presentation/dietary/dietry_page.dart';
 import 'package:fit_quest/presentation/exercise/exercise.dart';
-// import 'package:fit_quest/presentation/leaderboard/leaderboard.dart';
 import 'package:fit_quest/presentation/settings/settings.dart';
 import 'package:flutter/material.dart';
 
@@ -30,11 +29,6 @@ class _MainScreenState extends State<HomeScreen> {
       'label': 'Exercises',
       'view': const ExercisePage(),
     },
-    // {
-    //   'icon': Icons.leaderboard,
-    //   'label': 'Leaderboard',
-    //   'view': const LeaderboardPage(),
-    // },
     {
       'icon': Icons.fastfood,
       'label': 'Dietry Plan',
