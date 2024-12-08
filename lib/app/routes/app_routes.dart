@@ -16,7 +16,7 @@ class AppRoutes {
   static const String mapView = '/mapview-screen';
   
   // Onboarding Flow Routes
-  static const String onboardingFirst = '/onboarding-first-screen';
+  static const String onboardingFive = '/onboarding-five-screen';
   static const String onboardingOne = '/onboarding-one-screen';
   static const String onboardingTwo = '/onboarding-two-screen';
   static const String onboardingThree = '/onboarding-three-screen';

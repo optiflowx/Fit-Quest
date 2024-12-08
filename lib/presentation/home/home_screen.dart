@@ -5,6 +5,8 @@ import 'package:fit_quest/presentation/leaderboard/leaderboard.dart';
 import 'package:fit_quest/presentation/settings/settings.dart';
 import 'package:flutter/material.dart';
 
+import '../onboarding/welcome_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

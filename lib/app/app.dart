@@ -2,17 +2,18 @@ import 'package:fit_quest/app/error_page.dart';
 import 'package:fit_quest/presentation/authentication/pages/sign_up_page.dart';
 import 'package:fit_quest/app/splash.dart';
 import 'package:fit_quest/presentation/home/home_screen.dart';
-import 'package:fit_quest/presentation/onboarding/on_boarding_first.dart';
-import 'package:fit_quest/presentation/onboarding/on_boarding_four.dart';
-import 'package:fit_quest/presentation/onboarding/on_boarding_one.dart';
-import 'package:fit_quest/presentation/onboarding/on_boarding_three.dart';
+import 'package:fit_quest/presentation/onboarding/on_boarding_five.dart';
 import 'package:fit_quest/presentation/onboarding/on_boarding_two.dart';
+import 'package:fit_quest/presentation/onboarding/onboarding_one.dart';
 import 'package:fit_quest/presentation/onboarding/welcome_screen.dart';
 import 'package:fit_quest/presentation/running_tracker/running_tracker.dart';
 import '../core/services/system_ui_service.dart';
 import '../presentation/authentication/pages/sign_in_page.dart';
 import 'package:fit_quest/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+
+import '../presentation/onboarding/on_boarding_four.dart';
+import '../presentation/onboarding/on_boarding_three.dart';
 
 class FitQuestApp extends StatefulWidget {
   const FitQuestApp({super.key});
@@ -47,11 +48,11 @@ class _FitQuestAppState extends State<FitQuestApp> {
         AppRoutes.authSignUp: (context) => const SignUpPage(),
         AppRoutes.home: (context) => const HomeScreen(),
         AppRoutes.mapView: (context) => const CustomMapView(),
-        AppRoutes.onboardingFirst: (context) => const OnBoardingFirst(),
-        AppRoutes.onboardingOne: (context) => const OnBoardingOne(),
-        AppRoutes.onboardingTwo: (context) => const OnBoardingTwo(),
-        AppRoutes.onboardingThree: (context) => const OnBoardingThree(),
-        AppRoutes.onboardingFour: (context) => const OnBoardingFour(),
+        AppRoutes.onboardingOne: (context) => const OnboardingOne(),
+        AppRoutes.onboardingTwo: (context) => const OnboardingTwo(),
+        AppRoutes.onboardingThree: (context) => const OnboardingThree(),
+        AppRoutes.onboardingFour: (context) => const OnboardingFour(),
+        AppRoutes.onboardingFive: (context) => const OnboardingFive(),
         AppRoutes.welcomeScreen: (context) => const WelcomeScreen(),
       },
       onUnknownRoute: (settings) {

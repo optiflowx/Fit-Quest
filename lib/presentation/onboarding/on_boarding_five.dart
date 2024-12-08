@@ -5,8 +5,8 @@ import 'package:fit_quest/app/app_palette.dart';
 import '../../app/routes/app_routes.dart';
 import '../../components/app_button.dart';
 
-class OnboardingTwo extends StatelessWidget {
-  const OnboardingTwo({super.key});
+class OnboardingFive extends StatelessWidget {
+  const OnboardingFive({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class OnboardingTwo extends StatelessWidget {
           // Purple curved background with illustration
           Center(
             child: Image.asset(
-              'assets/design/bg2.png',
+              'assets/design/bg5.png',
               height: context.screenHeight * 0.6,
               fit: BoxFit.fitHeight,
             ),
@@ -34,7 +34,7 @@ class OnboardingTwo extends StatelessWidget {
                 Column(
                   children: [
                     const Text(
-                      'Track Your Goal',
+                      'Improve Sleep Quality',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class OnboardingTwo extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      "Don't worry if you have trouble determining your goals. We can help you determine your goals and track your goals",
+                      "Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
@@ -59,7 +59,7 @@ class OnboardingTwo extends StatelessWidget {
                   child: AppButton(
                     text: 'Next',
                     onPressed: () {
-                      context.replace(AppRoutes.onboardingThree);
+                      context.replace(AppRoutes.welcomeScreen);
                     },
                   ),
                 ),

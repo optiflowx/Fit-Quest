@@ -21,7 +21,7 @@ class SignUpPage extends StatelessWidget {
           }
 
           if (state.pageState.isLoaded) {
-            context.replace(AppRoutes.onboardingFirst);
+            context.replace(AppRoutes.onboardingOne);
           }
         },
         child: const SignUpView(),

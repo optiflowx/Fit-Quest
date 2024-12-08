@@ -1,7 +1,9 @@
-import 'package:fit_quest/app/routes/app_routes.dart';
-import 'package:fit_quest/components/app_button.dart';
 import 'package:fit_quest/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:fit_quest/app/app_palette.dart';
+
+import '../../app/routes/app_routes.dart';
+import '../../components/app_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -9,66 +11,57 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1F1F1F), // Background color
+      backgroundColor: AppPalette.darkGrey,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            flex: 2,
-            child: SafeArea(
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      width: context.screenWidth * .8,
-                      margin: const EdgeInsets.only(top: 60),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Image.asset(
-                        'assets/design/bg6.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
+          // Purple curved background with illustration
+          SafeArea(
+            child: Center(
+              child: Image.asset(
+                'assets/design/welcome.png',
+                height: context.screenHeight * 0.5,
+                width: context.screenWidth * 0.9,
+                fit: BoxFit.fitWidth,
               ),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Welcome',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+          Container(
+            height: context.screenHeight * 0.4,
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    const Text(
+                      'Welcome to FitQuest',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    "You are all set now, let's reach your goals together with us",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
+                    const SizedBox(height: 16),
+                    Text(
+                      "You are all set now, let's reach your goals together with us!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[400],
+                        height: 1.5,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                  AppButton(
-                    onPressed: () => context.replace(AppRoutes.home),
+                  ],
+                ),
+
+                // Next button
+                SafeArea(
+                  child: AppButton(
                     text: 'Go to Home',
+                    onPressed: () => context.replace(AppRoutes.home),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
